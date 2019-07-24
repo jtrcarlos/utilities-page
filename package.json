@@ -1,0 +1,26 @@
+{
+  "name": "utilities-page",
+  "version": "1.0.0",
+  "description": "Utilities Page",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build:css": "tailwind build src/main.css -o app/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtrcarlos/utilities-page.git"
+  },
+  "author": "JR Carlos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtrcarlos/utilities-page/issues"
+  },
+  "homepage": "https://github.com/jtrcarlos/utilities-page#readme",
+  "dependencies": {
+    "tailwindcss": "^1.0.5",
+    "tesseract.js": "^2.0.0-alpha.13"
+  }
+}

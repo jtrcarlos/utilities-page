@@ -1,16 +1,14 @@
-const { TesseractWorker } = Tesseract;
-const worker = new TesseractWorker();
+import { Tesseract } from "../../node_modules/tesseract";
 
+const imgTextInput = document.getElementById('imgTextInput').value;
 const imgTextOutput = document.getElementById('imgTextOutput');
-const imgTextInput = document.getElementById('imgTextInput');
+// const url = imgTextInput.value;
 
+const worker = Tesseract.TesseractWorker;
 
-/**
- * Converts an image from a external url to text
- */
 function imgTextConvert() {
     worker
-        .recognize(imgTextInput.value)
+        .recognize(imgTextInput)
         .progress((p) => {
             console.log('progress', p);
             var current_progress = p.progress * 100;
@@ -25,3 +23,4 @@ function imgTextConvert() {
             imgTextOutput.innerText = text;
         });
 }
+
