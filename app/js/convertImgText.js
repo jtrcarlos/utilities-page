@@ -1,21 +1,24 @@
-import { Tesseract } from "../../node_modules/tesseract";
+// import { Tesseract } from "../../node_modules/tesseract";
+const { TesseractWorker } = Tesseract;
+const worker = new TesseractWorker();
 
-const imgTextInput = document.getElementById('imgTextInput').value;
+const imgTextInput = document.getElementById('imgTextInput');
 const imgTextOutput = document.getElementById('imgTextOutput');
-// const url = imgTextInput.value;
 
-const worker = Tesseract.TesseractWorker;
+// const worker = Tesseract.TesseractWorker;
+// https://i.imgur.com/zKBiXVK.jpg
 
 function imgTextConvert() {
     worker
-        .recognize(imgTextInput)
+        .recognize(imgTextInput.value)
         .progress((p) => {
             console.log('progress', p);
-            var current_progress = p.progress * 100;
-            $(".progress-bar")
-                .css("width", current_progress + "%")
-                .attr("aria-valuenow", current_progress)
-                .text(current_progress + "% Complete");
+            document.getElementById('prog').innerText = p.status + " " + Math.floor(p.progress * 100) + "%";
+            // var current_progress = p.progress * 100;
+            // $(".progress-bar")
+            //     .css("width", current_progress + "%")
+            //     .attr("aria-valuenow", current_progress)
+            //     .text(current_progress + "% Complete");
         })
         .then(({ text }) => {
             console.log(text);
