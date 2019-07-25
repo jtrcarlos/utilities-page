@@ -14,11 +14,11 @@ function imgTextConvert() {
         .progress((p) => {
             console.log('progress', p);
             document.getElementById('prog').innerText = p.status + " " + Math.floor(p.progress * 100) + "%";
-            // var current_progress = p.progress * 100;
-            // $(".progress-bar")
-            //     .css("width", current_progress + "%")
-            //     .attr("aria-valuenow", current_progress)
-            //     .text(current_progress + "% Complete");
+            var current_progress = Math.floor(p.progress * 100);
+            $("#progress-bar")
+                .css("width", current_progress + "%")
+                .text(current_progress + "% Complete");
+            // $("#progress-bar-text").text(current_progress + "% Complete");
         })
         .then(({ text }) => {
             console.log(text);
