@@ -32,8 +32,38 @@ function imgTextConvert() {
             imgTextOutput.innerText = text;
             $('#convertButton')
                 .removeClass("cursor-not-allowed opacity-50");
+            // .text("Another!");
             $('#imgTextOutput')
                 .addClass('border');
+            $('#prog-status')
+                .fadeOut(750, function () {
+                    $(this).text("Done!").fadeIn(500);
+                });
+
+
+
+
+            // VAI BUSCAR O QUE VEM A FRENTE DO CAMPO SELECIONADO
+            // defenir campos a filtrar
+            var name = text.includes("Pleased");
+            // cria array com as linhas separadas
+            if (name) {
+                console.log(name);
+                var nameT = $("#imgTextOutput").html().split("<br>");
+                console.log(nameT);
+            }
+            // itenera pelas frases do Array, ve se contem o campo, retorna a linha sem o campo 
+            for (let i = 0; i < nameT.length; i++) {
+                if (nameT[i].includes("Pleased")) {
+                    console.log(nameT[i]);
+                    var newName = nameT[i].replace('Pleased', '');
+                    console.log(newName);
+
+                }
+
+
+            }
+
         });
 }
 
