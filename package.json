@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "build:css": "tailwind build src/main.css -o app/css/style.css"
+    "build:css": "tailwind build res/main.css -o src/css/style.css"
   },
   "repository": {
     "type": "git",
