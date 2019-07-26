@@ -5,9 +5,34 @@ const worker = new TesseractWorker();
 const imgTextInput = document.getElementById('imgTextInput');
 const imgTextOutput = document.getElementById('imgTextOutput');
 
+const regex = /^(https:\/\/.+)\.jpg$|^(https:\/\/.+)\.png$|^(https:\/\/.+)\.bmp$|^(https:\/\/.+)\.pbm$/;
+
 // const worker = Tesseract.TesseractWorker;
 // https://i.imgur.com/zKBiXVK.jpg
 
+
+/**
+ * Validates the input and enables the button
+ */
+function validateInput() {
+    var regexPass = regex.test(imgTextInput.value);
+    $('#convertButton')
+        .toggleClass("cursor-not-allowed opacity-50", !regexPass)
+        .prop('disabled', (!regexPass) ? true : false);
+    // function () {
+    //     if (!regexPass) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
+    // regex.test(imgTextInput)
+}
+validateInput();
+
+/**
+ * Converts and Image with text to Text
+ */
 function imgTextConvert() {
     worker
         .recognize(imgTextInput.value)
@@ -64,6 +89,13 @@ function imgTextConvert() {
 
             }
 
+        })
+        .catch((err) => {
+            if (err) {
+                // alert("Error! Please reload page");
+                $('#errorMsg')
+                    .removeClass('hidden');
+            }
+            console.log("Erro", err);
         });
 }
-
